@@ -1,0 +1,91 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": [
+    "airbnb",
+    "airbnb-typescript",
+    "airbnb/hooks",
+    "plugin:react/recommended",
+    "plugin:react/jsx-runtime"
+  ],
+  "globals": {
+    "jest": true
+  },
+  "overrides": [
+
+  ],
+  "parserOptions": {
+    "project": "./tsconfig.json",
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": [
+    "react"
+  ],
+  "rules": {
+    "no-console": "warn",
+    "react/jsx-one-expression-per-line": "off",
+    "import/prefer-default-export": "off",
+    "react/jsx-props-no-spreading": "off",
+    "react/jsx-filename-extension": [
+      "error",
+      {
+        "extensions": [
+          ".spec.js",
+          ".jsx",
+          ".spec.ts",
+          ".tsx"
+        ]
+      }
+    ],
+    "no-param-reassign": 0,
+    "no-restricted-imports": [
+      "error",
+      {
+        "patterns": [
+          "../*"
+        ]
+      }
+    ],
+    "@typescript-eslint/no-restricted-imports": [
+      "error",
+      {
+        "name": "react-redux",
+        "importNames": [
+          "useSelector",
+          "useDispatch"
+        ],
+        "message": "Use typed hooks `useAppDispatch` and `useAppSelector` instead."
+      }
+    ],
+    "import/order": [
+      "error",
+      {
+        "groups": [
+          [
+            "builtin",
+            "external"
+          ],
+          "internal",
+          [
+            "parent",
+            "sibling"
+          ],
+          "index"
+        ],
+        "newlines-between": "always",
+        "alphabetize": {
+          "order": "asc"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "import/resolver": {
+      "typescript": {
+      }
+    }
+  }
+}

@@ -1,0 +1,47 @@
+/* eslint-disable no-undef */
+import { ExpoConfig, ConfigContext } from 'expo/config';
+
+const { APP_ENV } = process.env;
+
+type AppEnvironment = 'development' | 'staging' | 'production';
+
+const appEnv = APP_ENV as AppEnvironment || 'development';
+
+const APP_NAME = 'Calendar-app';
+const APP_SLUG = 'calendar-app';
+const ANDROID_IDENTIFIER = APP_SLUG.replace(/-/g, '_');
+const IOS_IDENTIFIER = APP_SLUG;
+
+const appEnvironmentConfig = {
+  development: {
+    name: `${APP_NAME} Dev`,
+    androidIdentifier: `${ANDROID_IDENTIFIER}_dev`,
+    iosIdentifier: `${IOS_IDENTIFIER}-dev`,
+  },
+  staging: {
+    name: `${APP_NAME} Staging`,
+    androidIdentifier: `${ANDROID_IDENTIFIER}_staging`,
+    iosIdentifier: `${IOS_IDENTIFIER}-staging`,
+  },
+  production: {
+    name: APP_NAME,
+    androidIdentifier: ANDROID_IDENTIFIER,
+    iosIdentifier: IOS_IDENTIFIER,
+  },
+};
+
+const currentEnvironment = appEnvironmentConfig[appEnv];
+
+export default ({ config }: ConfigContext): ExpoConfig => ({
+  ...config,
+  name: currentEnvironment.name,
+  slug: APP_SLUG,
+  android: {
+    ...config.android,
+    package: `com.${config.owner}.${currentEnvironment.androidIdentifier}`,
+  },
+  ios: {
+    ...config.ios,
+    bundleIdentifier: `com.${config.owner}.${currentEnvironment.iosIdentifier}`,
+  },
+});
