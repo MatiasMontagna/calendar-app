@@ -1,4 +1,5 @@
 import { NavigationContainer } from '@react-navigation/native';
+import { SafeAreaView } from 'react-native';
 import { Provider as ReduxProvider } from 'react-redux';
 import { TailwindProvider, Utilities } from 'tailwind-rn';
 

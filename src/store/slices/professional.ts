@@ -1,4 +1,4 @@
-import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, createSelector, type PayloadAction } from '@reduxjs/toolkit';
 
 const oneHour = new Date(0);
 oneHour.setUTCHours(1);
@@ -44,6 +44,19 @@ const initialState: ProfessionalState = {
   sessionPrice: '50 USD',
   scheduledHours: [],
 };
+
+const selectProfessional = (state: { professional: ProfessionalState }) => state.professional;
+
+export const selectActiveDays = createSelector(
+  [selectProfessional],
+  (professional) => {
+    const activeDays: ServiceHour[] = professional.serviceHours.filter((serviceHour) => (
+      serviceHour.openHours.startsAt !== '' && serviceHour.openHours.endsAt !== ''
+    ));
+
+    return activeDays.map((activeDay) => activeDay.day);
+  },
+);
 
 export const professionalSlice = createSlice({
   name: 'professional',

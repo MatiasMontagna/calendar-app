@@ -8,7 +8,7 @@ import * as Yup from 'yup';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { professionalSlice, type ProfessionalState } from '@/store/slices/professional';
 
-import FormInput from './FormInput';
+import FormInput from './FormikFormInput';
 
 function ProfessionalForm() {
   const tailwind = useTailwind();
@@ -23,16 +23,9 @@ function ProfessionalForm() {
       Yup.object().shape({
         day: Yup.string().required('Day is required'),
         openHours: Yup.object().shape({
-          startsAt: Yup.string().required('Start time is required'),
-          endsAt: Yup.string().required('End time is required'),
+          startsAt: Yup.string(),
+          endsAt: Yup.string(),
         }),
-      }),
-    ),
-    scheduledHours: Yup.array().of(
-      Yup.object().shape({
-        day: Yup.string().required('Day is required'),
-        startsAt: Yup.date().required('Start time is required'),
-        endsAt: Yup.date().required('End time is required'),
       }),
     ),
   });
@@ -47,14 +40,12 @@ function ProfessionalForm() {
     <Formik
       initialValues={professionalData}
       validationSchema={validationSchema}
-      onSubmit={(values) => {
-        handleFormSubmit(values);
-      }}
+      onSubmit={(values) => handleFormSubmit(values)}
     >
       {({
         handleChange, handleSubmit, values, errors, touched,
       }) => (
-        <ScrollView style={tailwind('flex-col w-full')}>
+        <ScrollView style={tailwind('flex-col w-full pl-4')}>
           <FormInput
             name="Name"
             value={values.name}

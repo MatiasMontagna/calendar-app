@@ -1,24 +1,16 @@
-import { Button, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
 import { useTailwind } from 'tailwind-rn';
 
+import LogoutButton from '@/components/LogoutButton';
 import ProfessionalForm from '@/components/ProfessionalForm';
-import { useAppDispatch } from '@/store/hooks';
-import { currentUserSlice } from '@/store/slices/currentUser';
 
 export default function AdminScreen() {
   const tailwind = useTailwind();
-  const dispatch = useAppDispatch();
 
   return (
     <View style={tailwind('flex-1 items-center')}>
-      <Button
-        title="Logout"
-        onPress={() => dispatch(currentUserSlice.actions.setCurrentUser({
-          userType: undefined,
-          userEmail: undefined,
-        }))}
-      />
-      <Text>Admin Screen</Text>
+      <LogoutButton />
+      <Text style={tailwind('font-bold text-2xl')}>Admin Screen</Text>
       <ProfessionalForm />
     </View>
   );
