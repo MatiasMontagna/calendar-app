@@ -1,4 +1,10 @@
 {
+	"my-2": {
+		"style": {
+			"marginTop": 8,
+			"marginBottom": 8
+		}
+	},
 	"mt-4": {
 		"style": {
 			"marginTop": 16
@@ -39,6 +45,11 @@
 			"width": "91.666667%"
 		}
 	},
+	"w-full": {
+		"style": {
+			"width": "100%"
+		}
+	},
 	"flex-1": {
 		"style": {
 			"flexGrow": 1,
@@ -64,6 +75,11 @@
 	"justify-center": {
 		"style": {
 			"justifyContent": "center"
+		}
+	},
+	"justify-between": {
+		"style": {
+			"justifyContent": "space-between"
 		}
 	},
 	"rounded": {
@@ -118,6 +134,11 @@
 	"pt-2": {
 		"style": {
 			"paddingTop": 8
+		}
+	},
+	"pr-8": {
+		"style": {
+			"paddingRight": 32
 		}
 	},
 	"text-center": {

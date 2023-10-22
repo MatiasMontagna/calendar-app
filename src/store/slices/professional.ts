@@ -5,12 +5,14 @@ oneHour.setUTCHours(1);
 
 type Day = 'monday' | 'tuesday' | 'wednesday' | 'thursday' | 'friday' | 'saturday' | 'sunday';
 
+const DAYS: Day[] = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
+
 type ServiceHour = {
   day: Day,
   openHours: {
-    startsAt: Date,
-    endsAt: Date,
-  }[],
+    startsAt: string,
+    endsAt: string,
+  },
 };
 
 type ScheduledHour = {
@@ -19,7 +21,7 @@ type ScheduledHour = {
   endsAt: Date,
 };
 
-type ProfessionalState = {
+export type ProfessionalState = {
   name: string,
   serviceName: string,
   serviceHours: ServiceHour[],
@@ -31,7 +33,13 @@ type ProfessionalState = {
 const initialState: ProfessionalState = {
   name: 'Matías Montagna',
   serviceName: 'Therapy session',
-  serviceHours: [],
+  serviceHours: DAYS.map((day) => ({
+    day,
+    openHours: {
+      startsAt: '9:00',
+      endsAt: '18:00',
+    },
+  })),
   sessionDuration: oneHour,
   sessionPrice: '50 USD',
   scheduledHours: [],

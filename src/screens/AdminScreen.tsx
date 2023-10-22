@@ -1,6 +1,7 @@
 import { Button, Text, View } from 'react-native';
 import { useTailwind } from 'tailwind-rn';
 
+import ProfessionalForm from '@/components/ProfessionalForm';
 import { useAppDispatch } from '@/store/hooks';
 import { currentUserSlice } from '@/store/slices/currentUser';
 
@@ -18,7 +19,7 @@ export default function AdminScreen() {
         }))}
       />
       <Text>Admin Screen</Text>
-      <Text>Form goes here</Text>
+      <ProfessionalForm />
     </View>
   );
 }
