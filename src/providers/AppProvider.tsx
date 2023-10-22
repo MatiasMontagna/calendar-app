@@ -2,7 +2,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { Provider as ReduxProvider } from 'react-redux';
 import { TailwindProvider, Utilities } from 'tailwind-rn';
 
-import { store } from '@/store';
+import store from '@/store';
 
 // eslint-disable-next-line no-restricted-imports
 import utilities from '../../tailwind.json';

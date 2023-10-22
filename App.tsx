@@ -1,10 +1,10 @@
-import HomeNavigator from '@/navigators/HomeNavigator';
+import AppNavigator from '@/navigators/AppNavigator';
 import AppProvider from '@/providers/AppProvider';
 
 export default function App() {
   return (
     <AppProvider>
-      <HomeNavigator />
+      <AppNavigator />
     </AppProvider>
   );
 }
