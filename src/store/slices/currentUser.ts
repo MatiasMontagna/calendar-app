@@ -3,19 +3,22 @@ import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 type UserType = 'professional' | 'client';
 
 type CurrentUserState = {
-  user?: UserType
+  userEmail?: string,
+  userType?: UserType,
 };
 
 const initialState: CurrentUserState = {
-  user: undefined,
+  userEmail: undefined,
+  userType: undefined,
 };
 
 export const currentUserSlice = createSlice({
   name: 'currentUser',
   initialState,
   reducers: {
-    setCurrentUser(state, action: PayloadAction<UserType | undefined>) {
-      state.user = action.payload;
+    setCurrentUser(state, action: PayloadAction<CurrentUserState>) {
+      state.userEmail = action.payload.userEmail;
+      state.userType = action.payload.userType;
     },
   },
 });

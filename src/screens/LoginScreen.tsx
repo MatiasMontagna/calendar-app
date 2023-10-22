@@ -18,7 +18,10 @@ export default function LoginScreen() {
     if (userEmail === 'admin') userType = 'professional';
     else userType = 'client';
 
-    dispatch(currentUserSlice.actions.setCurrentUser(userType));
+    dispatch(currentUserSlice.actions.setCurrentUser({
+      userType,
+      userEmail,
+    }));
   }
 
   return (

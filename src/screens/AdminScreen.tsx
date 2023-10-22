@@ -10,7 +10,13 @@ export default function AdminScreen() {
 
   return (
     <View style={tailwind('flex-1 items-center')}>
-      <Button title="Logout" onPress={() => dispatch(currentUserSlice.actions.setCurrentUser(undefined))} />
+      <Button
+        title="Logout"
+        onPress={() => dispatch(currentUserSlice.actions.setCurrentUser({
+          userType: undefined,
+          userEmail: undefined,
+        }))}
+      />
       <Text>Admin Screen</Text>
       <Text>Form goes here</Text>
     </View>
