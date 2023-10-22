@@ -1,63 +1,19 @@
 # Calendar-app
 
-This is a React Native + Expo application, initially generated using [Cavendish](https://github.com/platanus/cavendish) by Platanus.
-
-## Instalation and development
-
-Assuming you've cloned the repo and that you have [Node](https://nodejs.org/en/) and [Yarn](https://yarnpkg.com/), you need to install the project dependencies in your local machine:
-
-```bash
-yarn install
+El stack del proyecto es Expo + React Native + Tailwind, se creó con [Cavendish](https://github.com/platanus/cavendish), un generador open source de proyectos mobile (yo contribuyo a ese proyecto). Para poder correrlo se debe hacer 
 ```
-
-And you're ready to go! You can now run the project, using the following in two separate command lines:
-
-```bash
+yarn install
 yarn start
 ```
 
-```bash
-yarn dev:tailwind
-```
+Luego, una vez aparece la terminal, hay 2 opciones:
+- escanear el QR con un teléfono
+- Apretar la tecla `a` para abrir un emulador de Android o `i` para iniciar un emulador de iOS (exclusivo para macOS)
 
-Then, you can scan the QR shown in console with the [Expo Go App](https://expo.dev/client). Remember that your phone and laptop have to be connected to the same wi-fi network in order for this to work!
+  # Consideraciones
 
-## Continuous Integration and deployment
-
-The project has a setup to run tests and style guides in CircleCI. You can also run the test locally simulating the production environment using [CircleCI's method](https://circleci.com/docs/2.0/local-cli/).
-
-The CI workflow also takes care of deploying and [publishing your application to Expo](https://docs.expo.io/workflow/publishing/). In order for this to work, you need to:
-
-1. Create a new account in [Expo](https://expo.dev/)
-1. [_Optional_] Create an [organization](https://docs.expo.io/accounts/account-types/#creating-new-organizations) and [add the owner key](https://docs.expo.dev/versions/latest/config/app/#owner) to the `app.json` file
-1. Create an [access token](https://docs.expo.io/accounts/programmatic-access/)
-1. Configure the token as a [CircleCI environment variable](https://circleci.com/docs/2.0/env-vars/)
-
-And you are done! Each time there is a commit in master, the pipeline will try to deploy the application.
-
-If it succeeds, you will be able to scan and share the app QR code through `https://expo.io/@organization-or-user-name/calendar-app`.
-
-## Style Guides
-
-Style guides are enforced through a CircleCI [job](.circleci/config.yml) with [reviewdog](https://github.com/reviewdog/reviewdog) as a reporter, using per-project dependencies and style configurations.
-
-Please note that this reviewdog implementation requires a GitHub user token to comment on pull requests. A token can be generated [here](https://github.com/settings/tokens), and it should have at least the `repo` option checked.
-
-The included `config.yml` assumes your CircleCI organization has a context named `org-global` with the required token under the environment variable `REVIEWDOG_GITHUB_API_TOKEN`.
-
-The project comes bundled with configuration files available in this repository. You can add or modify rules by editing the [`.eslintrc.json`](.eslintrc.json) file.
-
-You can (and should) use linter integrations for your text editor of choice, using the project's configuration.
-
-## Internal Dependencies
-
-### Tailwind RN
-We use the TailwindCSS adaptation for React Native: [`tailwind-rn`](https://github.com/vadimdemedes/tailwind-rn), in order to reduce the friction in mobile apps styling.
-
-If you need to add custom styles, make sure you follow the instructions given in the package's README.
-
-### React Navigation
-We use [React Navigation](https://reactnavigation.org/)@6.x to handle the shown screens and navigation interactions of the application.
-
-### Testing
-We use [Jest](https://jestjs.io/) and [React Native Testing Library](https://testing-library.com/docs/react-native-testing-library/intro/) in order to test the components of this app.
+- Para poder entrar como profesional (admin), se debe ingresar el valor `admin` (sín mayúsculas). Para entrar como cliente se puede usar cualquier otro valor (o ninguno)
+- En el panel de admin del profesional se pueden cambiar varios valores del profesional. Para quitar días habiles, se deben dejar los campos `startsAt` y `endsAt` como vacíos en el día que se pretende no dejar como día hábil
+- En el panel de booking del cliente se puede ver cuando duran las sesiones, cuanto cuestan, y seleccionar día y hora para hacer booking (en el dropdown de días no va a aparecer un día si el profesional lo dejó como no habil)
+- No se alcanzó a implementar el booking
+  
