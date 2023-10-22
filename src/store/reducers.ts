@@ -1,6 +1,12 @@
 import { combineReducers } from '@reduxjs/toolkit';
 
-const appReducer = combineReducers({});
+import { currentUserSlice } from './slices/currentUser';
+import { professionalSlice } from './slices/professional';
+
+const appReducer = combineReducers({
+  currentUser: currentUserSlice.reducer,
+  professional: professionalSlice.reducer,
+});
 
 export default appReducer;
 
